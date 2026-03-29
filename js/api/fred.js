@@ -9,7 +9,7 @@
    and store the key as a Worker secret to keep it off the client.
    ============================================================ */
 
-const FRED_API_KEY = 'YOUR_FRED_API_KEY_HERE';
+const FRED_API_KEY = 'cc4f21765e73b823dfa47eaea0e64254';
 const FRED_BASE_URL = 'https://api.stlouisfed.org/fred/series/observations';
 
 /**

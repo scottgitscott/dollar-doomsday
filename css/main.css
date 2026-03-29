@@ -551,7 +551,7 @@ section {
   font-style: italic;
   font-size: 1.1rem;
   font-weight: 300;
-  color: var(--color-text-primary);
+  color: var(--color-white);
   line-height: 1.7;
   letter-spacing: 0.01em;
 }

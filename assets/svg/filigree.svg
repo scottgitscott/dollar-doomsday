@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="32" viewBox="0 0 800 32">
+  <g fill="none" stroke="#c9a84c" stroke-width="0.8">
+    <!-- Center diamond -->
+    <polygon points="400,4 408,16 400,28 392,16" stroke-width="1"/>
+    <!-- Left scroll -->
+    <path d="M392,16 Q360,4 320,8 Q280,12 240,6 Q200,2 160,10 Q120,16 80,10 Q50,6 20,16"/>
+    <path d="M392,16 Q360,28 320,24 Q280,20 240,26 Q200,30 160,22 Q120,16 80,22 Q50,26 20,16"/>
+    <!-- Right scroll -->
+    <path d="M408,16 Q440,4 480,8 Q520,12 560,6 Q600,2 640,10 Q680,16 720,10 Q750,6 780,16"/>
+    <path d="M408,16 Q440,28 480,24 Q520,20 560,26 Q600,30 640,22 Q680,16 720,22 Q750,26 780,16"/>
+    <!-- End diamonds -->
+    <polygon points="10,11 18,16 10,21 2,16" stroke-width="0.8"/>
+    <polygon points="790,11 798,16 790,21 782,16" stroke-width="0.8"/>
+    <!-- Small accent diamonds -->
+    <polygon points="200,11 206,16 200,21 194,16" stroke-width="0.6"/>
+    <polygon points="600,11 606,16 600,21 594,16" stroke-width="0.6"/>
+  </g>
+</svg>

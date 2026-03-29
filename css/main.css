@@ -1,0 +1,902 @@
+/* ============================================================
+   DOLLAR DOOMSDAY — main.css
+   Sections: tokens → reset → base → nav → header → sections
+             → clock → timeline → charts → donate → footer
+             → responsive
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES
+   ---------------------------------------------------------- */
+:root {
+  /* Color palette */
+  --color-bg:              #0a0e0a;
+  --color-surface:         #111611;
+  --color-surface-raised:  #161d16;
+  --color-border:          #2a3a2a;
+  --color-engraving:       #85bb65;
+  --color-engraving-dim:   #4d7a3a;
+  --color-engraving-bright:#a8d97a;
+  --color-gold:            #c9a84c;
+  --color-gold-dim:        #8a6f2e;
+  --color-red:             #c0392b;
+  --color-red-dim:         #7d1f15;
+  --color-text-primary:    #d4e8d4;
+  --color-text-secondary:  #7a9a7a;
+  --color-text-muted:      #4a6a4a;
+  --color-parchment:       #1a1f14;
+
+  /* Typography */
+  --font-display: 'IM Fell English', Georgia, serif;
+  --font-mono:    'Share Tech Mono', 'Courier New', monospace;
+
+  /* Motion */
+  --ease-weight: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Spacing */
+  --section-pad: 80px;
+  --content-max:  1200px;
+  --content-pad:  24px;
+}
+
+/* ----------------------------------------------------------
+   2. RESET & BASE
+   ---------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a {
+  color: var(--color-engraving);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+a:hover { color: var(--color-engraving-bright); }
+
+/* ----------------------------------------------------------
+   3. STICKY NAVIGATION
+   ---------------------------------------------------------- */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(10, 14, 10, 0.96);
+  border-bottom: 1px solid var(--color-border);
+  transform: translateY(-100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.sticky-nav.visible {
+  transform: translateY(0);
+}
+
+.nav-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 10px var(--content-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--color-engraving);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+.nav-links a:hover { color: var(--color-engraving); }
+
+/* ----------------------------------------------------------
+   4. SITE HEADER / HERO
+   ---------------------------------------------------------- */
+.site-header {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Guilloche background texture */
+.guilloche-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/svg/guilloche.svg');
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  opacity: 0.055;
+  pointer-events: none;
+}
+
+/* Scan lines overlay */
+.site-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.025) 2px,
+    rgba(0, 0, 0, 0.025) 3px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 48px var(--content-pad);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.site-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 400;
+  color: var(--color-engraving);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.site-tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+  color: var(--color-text-muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 52px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.header-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+  transition: color 200ms, border-color 200ms;
+}
+.header-nav a:hover {
+  color: var(--color-engraving);
+  border-bottom-color: var(--color-engraving);
+}
+
+/* ----------------------------------------------------------
+   5. SECTION COMMON
+   ---------------------------------------------------------- */
+section {
+  position: relative;
+  padding: var(--section-pad) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-parchment {
+  background-color: var(--color-parchment);
+}
+
+.section-stamp {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  padding: 4px 14px;
+  white-space: nowrap;
+  background: var(--color-bg);
+}
+
+.section-parchment .section-stamp {
+  background: var(--color-parchment);
+}
+
+.section-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 40px var(--content-pad) 0;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--color-gold);
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-intro {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 56px;
+}
+
+/* Section divider (filigree) */
+.section-rule {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 56px;
+  height: 32px;
+  background-image: url('../assets/svg/filigree.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.6;
+}
+
+/* ----------------------------------------------------------
+   6. CLOCK SECTION
+   ---------------------------------------------------------- */
+#clock .section-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+}
+
+.clock-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.clock-face {
+  position: relative;
+  width: min(460px, 88vw);
+  height: min(460px, 88vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    #0d120d 0%,
+    var(--color-surface) 60%,
+    #0a0e0a 100%
+  );
+  border: 2px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Guilloche inside clock */
+.clock-guilloche {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background-image: url('../assets/svg/guilloche.svg');
+  background-size: 80px 80px;
+  background-repeat: repeat;
+  opacity: 0.05;
+  overflow: hidden;
+}
+
+/* Tick-mark SVG ring (generated by clock.js) */
+.clock-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.clock-ring svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Inner content */
+.clock-display {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clock-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.8vw, 1rem);
+  color: var(--color-gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.clock-digits {
+  font-family: var(--font-mono);
+  font-size: clamp(5rem, 18vw, 11rem);
+  color: var(--color-engraving);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-shadow:
+    0 0 10px var(--color-engraving),
+    0 0 30px var(--color-engraving-dim),
+    0 0 70px rgba(133, 187, 101, 0.25);
+  display: flex;
+  align-items: center;
+}
+
+.clock-colon {
+  margin: 0 2px;
+  position: relative;
+  top: -4px;
+}
+
+.clock-sublabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+
+.clock-subtext {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  max-width: 240px;
+  line-height: 1.5;
+}
+
+.clock-fine-print {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 460px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+/* Editorial paragraphs below clock */
+.clock-editorial {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 40px;
+}
+
+.clock-editorial p {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* ----------------------------------------------------------
+   7. TIMELINE SECTION
+   ---------------------------------------------------------- */
+.timeline {
+  position: relative;
+  padding: 20px 0 40px;
+}
+
+/* Center vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-border) 8%,
+    var(--color-border) 92%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+.timeline-event {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 80px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Diamond node on the center line */
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  width: 10px;
+  height: 10px;
+  background: var(--color-gold);
+  border: 2px solid var(--color-bg);
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 2;
+}
+
+/* Even events: card on the right */
+.timeline-event:nth-child(even) .timeline-content {
+  grid-column: 2;
+}
+
+/* Odd events: card on the left */
+.timeline-event:nth-child(odd) .timeline-content {
+  grid-column: 1;
+  text-align: right;
+}
+
+.timeline-content {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 20px 24px;
+}
+
+/* Accent border: right for left-column cards, left for right-column */
+.timeline-event:nth-child(odd) .timeline-content {
+  border-right: 3px solid var(--color-engraving-dim);
+}
+
+.timeline-event:nth-child(even) .timeline-content {
+  border-left: 3px solid var(--color-engraving-dim);
+}
+
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  color: var(--color-gold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-engraving-bright);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.timeline-desc {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+
+.timeline-impact {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-red);
+  border: 1px solid var(--color-red-dim);
+  padding: 3px 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------
+   8. CHARTS SECTION
+   ---------------------------------------------------------- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.chart-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-engraving-dim);
+  padding: 20px 20px 16px;
+}
+
+.chart-full-width {
+  grid-column: 1 / -1;
+}
+
+.chart-category {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.chart-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  line-height: 1.35;
+}
+
+.chart-container {
+  position: relative;
+  height: 280px;
+}
+
+.chart-wide {
+  height: 340px;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.chart-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  border: 1px dashed var(--color-border);
+  text-align: center;
+  padding: 16px;
+}
+
+.chart-source {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------
+   9. DONATE SECTION
+   ---------------------------------------------------------- */
+.donate-block {
+  max-width: 680px;
+  margin: 0 auto 52px;
+}
+
+.donate-intro {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+
+.wallet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.wallet-card {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-gold-dim);
+  padding: 16px 18px;
+}
+
+.wallet-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--color-gold);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.wallet-address-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wallet-address {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  word-break: break-all;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.6;
+}
+
+.copy-btn {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--color-engraving);
+  background: transparent;
+  border: 1px solid var(--color-engraving-dim);
+  padding: 4px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.copy-btn.copied {
+  color: var(--color-gold);
+  border-color: var(--color-gold-dim);
+}
+
+.donate-fine-print {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+
+/* ----------------------------------------------------------
+   10. PORTUGAL CTA
+   ---------------------------------------------------------- */
+.portugal-cta {
+  text-align: center;
+  padding: 48px 0 16px;
+  border-top: 1px solid var(--color-border);
+  margin-top: 8px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portugal-question {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 14px;
+}
+
+.portugal-link {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--color-engraving-dim);
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 200ms, border-color 200ms;
+}
+.portugal-link:hover {
+  color: var(--color-engraving);
+  border-bottom-color: var(--color-engraving);
+}
+
+/* ----------------------------------------------------------
+   11. FOOTER
+   ---------------------------------------------------------- */
+.site-footer {
+  padding: 32px 0 40px;
+  background: var(--color-bg);
+}
+
+.footer-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold-dim) 15%,
+    var(--color-gold-dim) 85%,
+    transparent
+  );
+  margin-bottom: 28px;
+}
+
+.footer-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-pad);
+  text-align: center;
+}
+
+.footer-name {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  color: var(--color-engraving-dim);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ----------------------------------------------------------
+   12. RESPONSIVE — TABLET (≤ 900px)
+   ---------------------------------------------------------- */
+@media (max-width: 900px) {
+  /* Timeline: collapse to single column, left-aligned */
+  .timeline::before {
+    left: 18px;
+  }
+
+  .timeline-event {
+    display: block;
+    padding-left: 52px;
+  }
+
+  .timeline-event::before {
+    left: 18px;
+    top: 20px;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .timeline-event:nth-child(odd) .timeline-content,
+  .timeline-event:nth-child(even) .timeline-content {
+    grid-column: auto;
+    text-align: left;
+    border-right: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-engraving-dim);
+  }
+
+  .timeline-event:nth-child(odd) .timeline-impact {
+    display: inline-block;
+  }
+
+  /* Charts: single column */
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-full-width {
+    grid-column: 1;
+  }
+}
+
+/* ----------------------------------------------------------
+   13. RESPONSIVE — MOBILE (≤ 600px)
+   ---------------------------------------------------------- */
+@media (max-width: 600px) {
+  :root { --section-pad: 60px; }
+
+  .nav-links { gap: 12px; }
+
+  .clock-digits {
+    font-size: clamp(4rem, 22vw, 7rem);
+  }
+
+  .clock-subtext { display: none; }
+
+  .clock-editorial p {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .wallet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Charts: allow horizontal scroll on mobile */
+  .chart-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .chart-container canvas {
+    min-width: 360px !important;
+  }
+
+  .chart-wide {
+    height: 280px;
+  }
+
+  .header-nav {
+    gap: 16px;
+  }
+
+  .section-stamp {
+    font-size: 0.58rem;
+    padding: 3px 10px;
+  }
+}
+
+/* ----------------------------------------------------------
+   14. RESPONSIVE — SMALL MOBILE (≤ 380px)
+   ---------------------------------------------------------- */
+@media (max-width: 380px) {
+  .site-name {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .clock-digits {
+    font-size: clamp(3.5rem, 24vw, 6rem);
+  }
+
+  .nav-inner {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 16px;
+  }
+}
+
+/* ----------------------------------------------------------
+   15. PRINT
+   ---------------------------------------------------------- */
+@media print {
+  body { background: white; color: black; }
+  .sticky-nav, .clock-face, .charts-grid { display: none; }
+}

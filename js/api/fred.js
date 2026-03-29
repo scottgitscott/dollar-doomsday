@@ -4,7 +4,7 @@
    The API key lives in the proxy — not here.
    ============================================================ */
 
-const FRED_PROXY = '/fred-proxy';
+const FRED_PROXY = 'https://dollar-doomsday-fred.wehaveainow.workers.dev';
 
 async function fetchFredSeries(seriesId, observationStart) {
   const startDate = observationStart || '1900-01-01';

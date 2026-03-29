@@ -465,12 +465,14 @@ section {
   transform: translateX(-50%);
 }
 
+/* Each event: detail card LEFT, summary RIGHT — always */
 .timeline-event {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0 80px;
-  margin-bottom: 40px;
+  gap: 0 0;
+  margin-bottom: 32px;
   position: relative;
+  align-items: center;
 }
 
 /* Diamond node on the center line */
@@ -478,44 +480,28 @@ section {
   content: '';
   position: absolute;
   left: 50%;
-  top: 22px;
+  top: 50%;
   width: 10px;
   height: 10px;
   background: var(--color-gold);
   border: 2px solid var(--color-bg);
-  transform: translateX(-50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
   z-index: 2;
 }
 
-/* Even events: card on the right */
-.timeline-event:nth-child(even) .timeline-content {
-  grid-column: 2;
-}
-
-/* Odd events: card on the left */
-.timeline-event:nth-child(odd) .timeline-content {
-  grid-column: 1;
-  text-align: right;
-}
-
+/* LEFT — detail card */
 .timeline-content {
+  grid-column: 1;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 20px 24px;
-}
-
-/* Accent border: right for left-column cards, left for right-column */
-.timeline-event:nth-child(odd) .timeline-content {
   border-right: 3px solid var(--color-engraving-dim);
-}
-
-.timeline-event:nth-child(even) .timeline-content {
-  border-left: 3px solid var(--color-engraving-dim);
+  padding: 22px 28px 22px 24px;
+  margin-right: 36px;
 }
 
 .timeline-year {
   font-family: var(--font-mono);
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   color: var(--color-gold);
   letter-spacing: 0.04em;
   line-height: 1;
@@ -524,29 +510,50 @@ section {
 
 .timeline-title {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--color-engraving-bright);
   margin-bottom: 10px;
   line-height: 1.4;
+  letter-spacing: 0.01em;
 }
 
 .timeline-desc {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--color-text-secondary);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .timeline-impact {
   display: inline-block;
   margin-top: 12px;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--color-red);
   border: 1px solid var(--color-red-dim);
   padding: 3px 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* RIGHT — one-sentence summary */
+.timeline-summary {
+  grid-column: 2;
+  padding: 16px 24px 16px 36px;
+  border-left: 2px solid var(--color-gold-dim);
+  display: flex;
+  align-items: center;
+}
+
+.timeline-summary p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
 /* ----------------------------------------------------------
@@ -794,32 +801,35 @@ section {
    12. RESPONSIVE — TABLET (≤ 900px)
    ---------------------------------------------------------- */
 @media (max-width: 900px) {
-  /* Timeline: collapse to single column, left-aligned */
+  /* Timeline: stack detail over summary, single column */
   .timeline::before {
-    left: 18px;
+    display: none;
   }
 
   .timeline-event {
     display: block;
-    padding-left: 52px;
   }
 
   .timeline-event::before {
-    left: 18px;
-    top: 20px;
-    transform: translateX(-50%) rotate(45deg);
+    display: none;
   }
 
-  .timeline-event:nth-child(odd) .timeline-content,
-  .timeline-event:nth-child(even) .timeline-content {
-    grid-column: auto;
-    text-align: left;
+  .timeline-content {
     border-right: 1px solid var(--color-border);
     border-left: 3px solid var(--color-engraving-dim);
+    margin-right: 0;
+    margin-bottom: 0;
+    border-bottom: none;
   }
 
-  .timeline-event:nth-child(odd) .timeline-impact {
-    display: inline-block;
+  .timeline-summary {
+    border-left: 3px solid var(--color-gold-dim);
+    border-top: none;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
   }
 
   /* Charts: single column */

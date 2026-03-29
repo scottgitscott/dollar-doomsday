@@ -9,22 +9,25 @@
    1. CSS CUSTOM PROPERTIES
    ---------------------------------------------------------- */
 :root {
-  /* Color palette */
-  --color-bg:              #0a0e0a;
-  --color-surface:         #111611;
-  --color-surface-raised:  #161d16;
-  --color-border:          #2a3a2a;
-  --color-engraving:       #85bb65;
-  --color-engraving-dim:   #4d7a3a;
-  --color-engraving-bright:#a8d97a;
+  /* Color palette — sourced from actual US Federal Reserve Note design */
+  --color-bg:              #080c08;
+  --color-surface:         #0e140e;
+  --color-surface-raised:  #141e14;
+  --color-border:          #1e3320;
+  --color-engraving:       #6aaa3b;
+  --color-engraving-dim:   #3d7a2a;
+  --color-engraving-bright:#8fd15a;
+  --color-bill-dark:       #1f4d2a;
   --color-gold:            #c9a84c;
   --color-gold-dim:        #8a6f2e;
   --color-red:             #c0392b;
   --color-red-dim:         #7d1f15;
-  --color-text-primary:    #d4e8d4;
-  --color-text-secondary:  #7a9a7a;
+  --color-cream:           #e8e0c8;
+  --color-white:           #f4f0e4;
+  --color-text-primary:    #e8e0c8;
+  --color-text-secondary:  #a8b89a;
   --color-text-muted:      #4a6a4a;
-  --color-parchment:       #1a1f14;
+  --color-parchment:       #111a11;
 
   /* Typography */
   --font-display: 'IM Fell English', Georgia, serif;
@@ -178,7 +181,7 @@ a:hover { color: var(--color-engraving-bright); }
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 400;
-  color: var(--color-engraving);
+  color: var(--color-white);
   letter-spacing: -0.01em;
   line-height: 1.05;
   margin-bottom: 20px;

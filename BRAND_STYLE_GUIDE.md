@@ -1,6 +1,6 @@
 # Dollar Doomsday — Brand Style Guide
 
-**Version 1.0 | For use by Claude Code when building dollardoomsday.com**
+**Version 2.0 | For use by Claude Code when building dollardoomsday.com**
 
 ---
 
@@ -16,29 +16,50 @@ This is not a conspiracy site. It is not a meme site. It is a site that takes th
 
 ## 02. Color Palette
 
-All colors reference US dollar bill design and federal document aesthetics, then push them into a digital/decay direction.
+All colors are sourced directly from actual US currency design — the Bureau of Engraving and Printing's intaglio ink colors, Federal Reserve note paper, and security feature tones across the $1, $5, $20, and $100 denominations. The site is dark-themed (dark backgrounds always), but the foreground elements — text, borders, decorative features — should read as if printed in authentic currency ink on authentic currency paper.
 
-| Token | Hex | Usage |
-|---|---|---|
-| `--color-bg` | `#0a0e0a` | Page background — near-black with green undertone |
-| `--color-surface` | `#111611` | Card/panel backgrounds |
-| `--color-surface-raised` | `#161d16` | Elevated UI elements |
-| `--color-border` | `#2a3a2a` | Borders, dividers |
-| `--color-engraving` | `#85bb65` | Primary green — dollar bill ink, the hero color |
-| `--color-engraving-dim` | `#4d7a3a` | Secondary/muted green |
-| `--color-engraving-bright` | `#a8d97a` | Highlight green, hover states |
-| `--color-gold` | `#c9a84c` | Gold accent — for key callouts, seals, important labels |
-| `--color-gold-dim` | `#8a6f2e` | Muted gold |
-| `--color-red` | `#c0392b` | Danger/alert — use sparingly, maximum impact |
-| `--color-red-dim` | `#7d1f15` | Secondary red, backgrounds behind red text |
-| `--color-text-primary` | `#d4e8d4` | Main body text — slightly green-tinted white |
-| `--color-text-secondary` | `#7a9a7a` | Secondary/supporting text |
-| `--color-text-muted` | `#4a6a4a` | Fine print, labels |
-| `--color-parchment` | `#1a1f14` | Subtle warm parchment layer — use for section backgrounds |
+### Reference: Actual US Currency Colors
+- **$1 / $5 bill back green:** Deep intaglio green — the characteristic "dollar green" of BEP printing ink. Approximately `#3a7d44` darkening to `#1f4d2a` in shadow areas.
+- **$100 bill blue security ribbon:** `#1b6ca8`
+- **$100 gold numeral / bell:** `#c9a84c`
+- **$20 / $50 peach security thread:** `#d4956a` (used sparingly for warmth accents)
+- **Federal Reserve seal green:** Deeper, more official — approximately `#2d6a3f`
+- **Bill paper / cream:** `#e8e0c8` — the off-white cream of actual currency paper; use for primary text so it reads like ink on a bill
 
-**Primary brand color:** `--color-engraving` `#85bb65`  
-**Danger/urgency color:** `--color-red` `#c0392b`  
-**Prestige/official accent:** `--color-gold` `#c9a84c`
+### Color Tokens
+
+| Token | Hex | Sourced From | Usage |
+|---|---|---|---|
+| `--color-bg` | `#080c08` | Bill viewed in dark — near-black, strong green undertone | Page background |
+| `--color-surface` | `#0e140e` | Dark face of currency stock | Card/panel backgrounds |
+| `--color-surface-raised` | `#141e14` | Slightly lighter currency surface | Elevated UI elements |
+| `--color-border` | `#1e3320` | Dark engraving border lines on bills | Borders, dividers |
+| `--color-engraving` | `#6aaa3b` | BEP intaglio printing ink — the classic dollar green | Primary green — hero color |
+| `--color-engraving-dim` | `#3d7a2a` | Federal Reserve seal deep green | Secondary/muted green |
+| `--color-engraving-bright` | `#8fd15a` | Highlighted bill surface under light | Hover states, highlights |
+| `--color-bill-dark` | `#1f4d2a` | Shadow areas of bill back engraving | Deep green accents |
+| `--color-gold` | `#c9a84c` | $100 bill gold numeral and liberty bell | Key callouts, seals, labels |
+| `--color-gold-dim` | `#8a6f2e` | Aged gold on older denomination designs | Muted gold |
+| `--color-red` | `#c0392b` | Emergency — use sparingly | Danger/alert only |
+| `--color-red-dim` | `#7d1f15` | Background behind red elements | Secondary red |
+| `--color-cream` | `#e8e0c8` | Actual US currency paper stock | **Primary text color** — reads like ink on a bill |
+| `--color-text-primary` | `#e8e0c8` | Same as cream — bill paper | Main body text |
+| `--color-text-secondary` | `#a8b89a` | Lighter engraving areas on bill surface | Secondary/supporting text |
+| `--color-text-muted` | `#4a6a4a` | Deep shadow of bill printing | Fine print, labels |
+| `--color-parchment` | `#111a11` | Bill surface — slightly warmer dark green | Alternate section backgrounds |
+| `--color-white` | `#f4f0e4` | Stark white areas on currency (portrait backgrounds, borders) | Key headings, max contrast elements |
+
+**Primary brand color:** `--color-engraving` `#6aaa3b` — authentic BEP intaglio dollar green
+**Primary text color:** `--color-cream` `#e8e0c8` — currency paper stock; all body text uses this
+**Danger/urgency color:** `--color-red` `#c0392b`
+**Prestige/official accent:** `--color-gold` `#c9a84c` — $100 bill gold
+
+### Color Usage Principles
+- **Backgrounds:** Always dark (`--color-bg`, `--color-surface`, `--color-parchment`) — dark only, always
+- **Text:** Cream (`--color-cream` / `--color-text-primary`) is the default for all readable text. It should feel like BEP ink on currency paper — not white, not green-tinted, but warm cream.
+- **Green:** Used for decorative elements, borders, accents, data lines, the clock digits, hover states — not for body text
+- **White (`--color-white`):** Reserved for the site name hero heading and maximum-contrast callouts only. Evokes the stark white of currency security borders.
+- **Gold:** Sparingly — seals, section stamps, the clock ring, key data callouts
 
 ---
 
@@ -82,13 +103,17 @@ Load via: `https://fonts.googleapis.com/css2?family=Share+Tech+Mono`
 ## 04. Visual Identity & Motifs
 
 ### Dollar Bill Texture System
-The visual DNA comes from US currency design elements. These should appear throughout as subtle overlays, borders, and background patterns:
+The visual DNA comes directly from the design language of circulating US Federal Reserve Notes — $1, $5, $20, and $100 bills. Study these bills. Every element on them exists for a reason. Use those reasons.
 
-- **Guilloche patterns** — the fine-line repeating rosette/spiral patterns found in currency backgrounds. Use as SVG overlays at 5–8% opacity on dark section backgrounds.
-- **Engraving crosshatch lines** — diagonal line textures that simulate intaglio printing. Apply as CSS patterns on hero sections.
-- **Security border filigree** — the ornate rectangular borders found on currency. Use as section dividers and card borders. Should be SVG-based.
-- **Federal seal motif** — circular seal imagery (eagle, stars, radiating lines) used sparingly as a watermark or loading indicator.
-- **Microprint lines** — extremely small text used as decorative rules (in real dollars these say "THE UNITED STATES OF AMERICA" repeatedly). Can render as a border element.
+- **Guilloche patterns** — the fine-line repeating rosette/wave patterns that fill the background of every bill denomination. On the $1 bill back, these radiate behind "ONE." Use as SVG overlays at 5–8% opacity on dark section backgrounds. The lines should be `--color-engraving` or `--color-engraving-dim`.
+- **Engraving crosshatch (intaglio texture)** — the raised-ink diagonal line crosshatch that makes currency feel textured to the touch. Simulate as CSS repeating-linear-gradient patterns. The $100 portrait area is the reference.
+- **Security border filigree** — the ornate rectangular scrollwork borders on all denominations. On the $1 bill, these run along all four edges. Use as section dividers and card borders in SVG. Color: `--color-engraving-dim`.
+- **Federal Reserve seal** — the circular seal (left side of face on all bills) with radiating lines, serrated edge, and letter identifying the issuing bank. Use sparingly as watermark at low opacity. Color: `--color-engraving`.
+- **Treasury seal** — the circular seal on the right of bill faces, with scales and key. Same treatment as Federal Reserve seal.
+- **Microprint** — extremely small repeating text used as security feature on modern bills ($100: "THE UNITED STATES OF AMERICA" along Franklin's collar; $20: "USA20" in the numeral). Render as a CSS/SVG decorative border element at 5–6px font size, nearly illegible, in `--color-engraving-dim`.
+- **Serial number aesthetic** — the green serial number typeface on bills (a specific monospace style). Use `Share Tech Mono` with `letter-spacing: 0.2em` for section stamps and classification labels to evoke this.
+- **"In God We Trust" / "Federal Reserve Note" label styling** — the small-cap serif labels above and below portrait areas. Use `IM Fell English` at small sizes, centered, for section sub-labels.
+- **Portrait oval** — the oval framing device around bill portraits. Can be used as a container motif for callout boxes.
 
 ### Digital Decay Layer
 On top of the federal aesthetic, apply controlled digital corruption:
@@ -100,50 +125,51 @@ On top of the federal aesthetic, apply controlled digital corruption:
 
 ### The Doomsday Clock Visual Spec
 This is the hero element. Design rules:
-- **Shape:** Circular clock face, dark background, minimal bezel
+- **Shape:** Circular clock face — styled as an official Federal Reserve instrument. Evoke the circular seals and medallions found on currency.
 - **Clock hands:** Not traditional — this is a **digital countdown display** styled to look like an official instrument
-- **Numerals:** `Share Tech Mono`, large, green `#85bb65`, with CRT glow effect
+- **Numerals:** `Share Tech Mono`, large, `--color-engraving` `#6aaa3b`, with CRT glow effect
 - **Format displayed:** `MM:SS` — currently **`09:00`** (static)
-- **Surrounding ring:** Thin gold `#c9a84c` circular border with tick marks at each second position
-- **Label below clock:** `"MINUTES TO ZERO VALUE"` in `Share Tech Mono`, uppercase, muted green
-- **Subtext:** `"Estimated time remaining before the US dollar becomes worthless"` — small, italic, IM Fell English
-- **Background:** Guilloche pattern radiating from clock center
+- **Surrounding ring:** Thin gold `#c9a84c` circular border with tick marks — like the serrated edge of a Federal Reserve seal
+- **Label above digits:** `"Dollar Doomsday Clock"` in `IM Fell English`, gold — like the text ring on a Federal Reserve seal
+- **Label below digits:** `"MINUTES TO ZERO VALUE"` in `Share Tech Mono`, uppercase, `--color-text-muted`
+- **Subtext:** `"Estimated time remaining before the US dollar becomes worthless"` — small, italic, `IM Fell English`, cream
+- **Background:** Guilloche pattern radiating from clock center, `--color-engraving` at 4–6% opacity
 
 ---
 
 ## 05. UI Component Patterns
 
 ### Section Structure
-Each of the four main sections should feel like a **classified federal document** or **official government report**:
-- Top border: thin gold line with section number stamp (e.g., `[SECTION 02]`) in monospace
-- Section header in IM Fell English
-- Subtle guilloche background at low opacity
+Each of the four main sections should feel like a **denomination of currency** or **official Federal Reserve document**:
+- Top border: thin gold rule with section number stamp in monospace — styled like the "FEDERAL RESERVE NOTE" designation band on a bill
+- Section header in `IM Fell English` — like the "THE UNITED STATES OF AMERICA" text on bill faces
+- Subtle guilloche background at low opacity — like the security background of a denomination's back design
 - Content padding: generous — `80px 0` vertical minimum
 
 ### Cards / Data Panels
 - Background: `--color-surface`
 - Border: `1px solid var(--color-border)`
-- Left accent border: `3px solid var(--color-engraving)` — like a classified document tab
-- Slight inner shadow for depth
-- Label in uppercase monospace at top: acts like a document section header
+- Left accent border: `3px solid var(--color-engraving-dim)` — like the edge color bands on currency
+- Label in uppercase `Share Tech Mono` at top — evokes the "SERIES 2017A" / "THIS NOTE IS LEGAL TENDER" label style
 
 ### Graphs & Charts
 - Background: `--color-surface`
 - Grid lines: `--color-border` at 50% opacity
-- Primary data line/bar color: `--color-engraving` `#85bb65`
+- Primary data line/bar color: `--color-engraving` `#6aaa3b` — BEP intaglio green
 - Comparison data: `--color-gold` for gold, `#f7931a` for Bitcoin (native BTC orange), `--color-red` for alarming trends
-- Tooltips: styled like classified document callouts — dark bg, gold border, monospace text
+- Tooltips: dark bg (`--color-surface`), gold border (`--color-gold`), cream text (`--color-cream`), monospace font
 - Axis labels: `Share Tech Mono`, `--color-text-muted`, uppercase
 
 ### Buttons / CTAs
-- Primary: filled `--color-engraving` background, dark text, monospace label, uppercase
-- Secondary: transparent, `--color-engraving` border, green text
+- Primary: filled `--color-engraving` background, `--color-bg` dark text, monospace label, uppercase
+- Secondary: transparent, `--color-engraving` border, `--color-engraving` text
 - Hover state: slight glow `box-shadow: 0 0 15px var(--color-engraving-dim)`
-- No border-radius — sharp corners only. Currency has no rounded corners.
+- No border-radius — sharp corners only. US currency has no rounded corners.
 
 ### Dividers
-- Use thin horizontal rules with the federal filigree pattern
-- Or: a row of asterisks/stars in gold monospace: `✦ ✦ ✦` centered
+- Use the filigree SVG pattern — styled after the scrollwork borders on bill edges
+- Or: a row of stars in gold monospace: `✦ ✦ ✦` centered, in `--color-gold-dim`
+- Thin horizontal rule: `1px solid` with gradient from transparent → `--color-gold-dim` → transparent
 
 ---
 

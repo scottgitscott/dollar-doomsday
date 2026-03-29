@@ -65,37 +65,41 @@ All colors are sourced directly from actual US currency design — the Bureau of
 
 ## 03. Typography
 
-The type system pairs **official federal document gravitas** with **cold digital precision**. Two families, no exceptions.
+The type system pairs **the engraved serif tradition of US federal currency** with **machine-precision monospace** — the exact pairing found on every bill in circulation. Two families, no exceptions.
 
 ### Display / Headline Font
-**`"IM Fell English"`** — Google Fonts  
-Used for: Hero headings, section titles, the site name, the clock label, pull quotes  
-Characteristics: Authentic historical serif with ink-press texture — evokes 18th-century proclamations, the Declaration of Independence, Federal Reserve notes  
-Load via: `https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1`
+**`"Cormorant Garamond"`** — Google Fonts
+Used for: Hero headings, section titles, the site name, the clock label, pull quotes, editorial body paragraphs
+Characteristics: A high-contrast revival of Claude Garamont's 16th-century designs — the same Old Style serif tradition that directly informs Bureau of Engraving and Printing lettering. The thick-to-thin stroke contrast mimics intaglio engraving. Elegant, authoritative, slightly archaic. Feels like it was set by a government printer in 1850 and has been on every denomination since.
+Load via: `https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap`
+Use weights: 300 (fine print, muted labels), 400 (body), 500 (section titles), 600 (hero headings)
 
 ### Data / UI / Body Font
-**`"Share Tech Mono"`** — Google Fonts  
-Used for: All body text, data labels, graph annotations, numbers, the countdown clock digits, metadata, legal-style fine print  
-Characteristics: Monospaced, technical, slightly military — evokes terminal readouts, ticker tape, classified documents  
-Load via: `https://fonts.googleapis.com/css2?family=Share+Tech+Mono`
+**`"Space Mono"`** — Google Fonts
+Used for: All data labels, chart annotations, numbers, the countdown clock digits, serial-number-style metadata, section stamps, copy-to-clipboard buttons, fine print
+Characteristics: A geometric, fixed-width typeface built for precision — closer in spirit to the machine-punched serial number typefaces on Federal Reserve Notes than any other freely available monospace. Heavier, more authoritative than Share Tech Mono. Evokes punch-card machines, the Fed wire system, and government data terminals.
+Load via: `https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap`
 
 ### Type Scale
 
 | Role | Font | Size | Weight | Case |
 |---|---|---|---|---|
-| Site name / Hero | IM Fell English | `clamp(3rem, 8vw, 7rem)` | 400 | Title case |
-| Section headers | IM Fell English | `clamp(1.8rem, 4vw, 3rem)` | 400 | Title case |
-| Subsection headers | Share Tech Mono | `1.1rem` | 400 | UPPERCASE |
-| Body text | Share Tech Mono | `0.95rem` | 400 | Sentence case |
-| Data labels | Share Tech Mono | `0.75rem` | 400 | UPPERCASE |
-| Clock digits | Share Tech Mono | `clamp(5rem, 15vw, 12rem)` | 400 | — |
-| Fine print / legal | Share Tech Mono | `0.7rem` | 400 | Sentence case |
+| Site name / Hero | Cormorant Garamond | `clamp(3rem, 8vw, 7rem)` | 600 | Title case |
+| Section headers | Cormorant Garamond | `clamp(1.8rem, 4vw, 3rem)` | 500 | Title case |
+| Editorial body paragraphs | Cormorant Garamond | `1.1rem` | 400 | Sentence case |
+| Subsection / UI headers | Space Mono | `0.9rem` | 700 | UPPERCASE |
+| Body text / labels | Space Mono | `0.85rem` | 400 | Sentence case |
+| Data labels | Space Mono | `0.72rem` | 400 | UPPERCASE |
+| Clock digits | Space Mono | `clamp(5rem, 15vw, 12rem)` | 700 | — |
+| Fine print / legal | Space Mono | `0.65rem` | 400 | Sentence case |
 
 ### Typography Rules
-- Generous line-height on body text: `1.8`
-- Tight tracking on monospace UI labels: `letter-spacing: 0.15em`
-- IM Fell English headings: `letter-spacing: -0.01em`
-- All numbers and data values: always `Share Tech Mono`
+- Editorial paragraphs (clock section, timeline descriptions) use **Cormorant Garamond** — they should read like official proclamations
+- All numbers, dates, percentages, and data values: always **Space Mono**
+- Line-height on Cormorant Garamond body text: `1.9` — open and formal
+- Line-height on Space Mono body text: `1.75`
+- Tight tracking on Space Mono UI labels: `letter-spacing: 0.15em`
+- Cormorant Garamond headings: `letter-spacing: 0.02em` — slight open tracking enhances the engraved feel
 - Never mix the two fonts within a single sentence
 
 ---

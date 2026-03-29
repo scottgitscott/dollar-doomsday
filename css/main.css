@@ -30,8 +30,8 @@
   --color-parchment:       #111a11;
 
   /* Typography */
-  --font-display: 'IM Fell English', Georgia, serif;
-  --font-mono:    'Share Tech Mono', 'Courier New', monospace;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-mono:    'Space Mono', 'Courier New', monospace;
 
   /* Motion */
   --ease-weight: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -180,9 +180,9 @@ a:hover { color: var(--color-engraving-bright); }
 .site-name {
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--color-white);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   line-height: 1.05;
   margin-bottom: 20px;
 }
@@ -259,9 +259,9 @@ section {
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-gold);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -431,10 +431,12 @@ section {
 
 .clock-editorial p {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+  font-weight: 400;
   line-height: 1.95;
   color: var(--color-text-primary);
   text-align: center;
+  letter-spacing: 0.01em;
 }
 
 /* ----------------------------------------------------------

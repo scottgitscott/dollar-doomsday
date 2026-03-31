@@ -68,10 +68,18 @@ function tooltipDefaults() {
   };
 }
 
-function showFallback(id) {
+function showFallback(id, err) {
   const fb  = document.getElementById(`chart-${id}-fallback`);
   const cvs = document.getElementById(`chart-${id}`);
-  if (fb)  { fb.hidden = false; }
+  if (fb)  {
+    fb.hidden = false;
+    if (err) {
+      const msg = fb.querySelector('.fallback-error') || document.createElement('div');
+      msg.className = 'fallback-error';
+      msg.textContent = err;
+      if (!fb.querySelector('.fallback-error')) fb.appendChild(msg);
+    }
+  }
   if (cvs) { cvs.style.display = 'none'; }
 }
 
@@ -136,8 +144,8 @@ async function initM2Chart() {
       },
     });
   } catch (e) {
-    console.warn('M2 chart:', e.message);
-    showFallback('m2');
+    console.error('M2 chart:', e);
+    showFallback('m2', e.message);
   }
 }
 
@@ -204,8 +212,8 @@ async function initCPIChart() {
       },
     });
   } catch (e) {
-    console.warn('CPI chart:', e.message);
-    showFallback('cpi');
+    console.error('CPI chart:', e);
+    showFallback('cpi', e.message);
   }
 }
 
@@ -255,8 +263,8 @@ async function initDXYChart() {
       },
     });
   } catch (e) {
-    console.warn('DXY chart:', e.message);
-    showFallback('dxy');
+    console.error('DXY chart:', e);
+    showFallback('dxy', e.message);
   }
 }
 
@@ -306,8 +314,8 @@ async function initDebtChart() {
       },
     });
   } catch (e) {
-    console.warn('Debt/GDP chart:', e.message);
-    showFallback('debt');
+    console.error('Debt/GDP chart:', e);
+    showFallback('debt', e.message);
   }
 }
 
@@ -401,8 +409,8 @@ async function initCurrencyChart() {
       },
     });
   } catch (e) {
-    console.warn('Currency chart:', e.message);
-    showFallback('currencies');
+    console.error('Currency chart:', e);
+    showFallback('currencies', e.message);
   }
 }
 
@@ -520,8 +528,8 @@ async function initBTCChart() {
       },
     });
   } catch (e) {
-    console.warn('BTC/Gold/M2 chart:', e.message);
-    showFallback('btc');
+    console.error('BTC/Gold/M2 chart:', e);
+    showFallback('btc', e.message);
   }
 }
 

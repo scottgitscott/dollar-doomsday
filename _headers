@@ -2,4 +2,4 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' cdn.jsdelivr.net fonts.googleapis.com; style-src 'self' fonts.googleapis.com fonts.gstatic.com; font-src fonts.gstatic.com; connect-src 'self' cdn.jsdelivr.net api.coingecko.com; img-src 'self' data:;
+  Content-Security-Policy: default-src 'self'; script-src 'self' cdn.jsdelivr.net fonts.googleapis.com; style-src 'self' fonts.googleapis.com fonts.gstatic.com; font-src fonts.gstatic.com; connect-src 'self' cdn.jsdelivr.net api.coingecko.com https://dollar-doomsday-fred.wehaveainow.workers.dev; img-src 'self' data:;
